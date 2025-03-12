@@ -3,72 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Imágenes</title>
+    <title>Galería de Fotos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        h1 {
-            margin: 20px 0;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        .image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #fff;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .caption {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-        }
+        body { text-align: center; font-family: Arial, sans-serif; margin: 0; }
+        h1 { margin: 20px 0; }
+        .carousel-container { width: 80%; margin: auto; overflow: hidden; position: relative; }
+        .carousel { display: flex; transition: transform 1s ease-in-out; }
+        .carousel img { width: 100%; height: 50vh; object-fit: cover; border-radius: 10px; }
+        .footer { margin-top: 20px; padding: 20px; background: #333; color: white; }
+        .social-icons a { margin: 0 10px; color: white; font-size: 24px; text-decoration: none; }
     </style>
 </head>
 <body>
-    <h1>Galería de Imágenes</h1>
-    <div class="gallery">
-        <div class="image-container">
-            <img src="https://pixabay.com/es/photos/image-9453063" alt="Naturaleza">
-            <div class="caption">Naturaleza</div>
-        </div>
-        <div class="image-container">
-            <img src="https://source.unsplash.com/random/300x200?city" alt="Ciudad">
-            <div class="caption">Ciudad</div>
-        </div>
-        <div class="image-container">
-            <img src="https://source.unsplash.com/random/300x200?animals" alt="Animales">
-            <div class="caption">Animales</div>
-        </div>
-        <div class="image-container">
-            <img src="https://source.unsplash.com/random/300x200?technology" alt="Tecnología">
-            <div class="caption">Tecnología</div>
-        </div>
-        <div class="image-container">
-            <img src="https://source.unsplash.com/random/300x200?art" alt="Arte">
-            <div class="caption">Arte</div>
+    <h1>Galería de Fotos</h1>
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="https://cdn.pixabay.com/photo/2025/03/05/10/41/tree-9448275_1280.jpg" alt="Imagen 1">
+            <img src="https://cdn.pixabay.com/photo/2025/03/05/14/35/cat-9448800_1280.jpg" alt="Imagen 2">
+            <img src="https://cdn.pixabay.com/photo/2025/03/07/15/17/goose-9453257_1280.jpg" alt="Imagen 3">
+	    <img src="https://cdn.pixabay.com/photo/2022/10/10/18/39/flower-7512435_960_720.jpg" alt="Imagen 4">
+            <img src="https://cdn.pixabay.com/photo/2024/06/19/08/18/woman-8839452_960_720.jpg" alt="Imagen 5">
+	    <img src="https://cdn.pixabay.com/photo/2023/11/17/16/54/boat-8394639_960_720.jpg" alt="Imagen 6">
+            <img src="https://cdn.pixabay.com/photo/2025/02/18/15/15/bird-9415665_960_720.jpg" alt="Imagen 7">
+            <img src="https://cdn.pixabay.com/photo/2022/10/23/01/17/sunflower-7540266_960_720.jpg" alt="Imagen 8">
+	    <img src="https://cdn.pixabay.com/photo/2022/10/10/18/39/flower-7512435_960_720.jpg" alt="Imagen 9">
+            <img src="https://cdn.pixabay.com/photo/2024/06/19/08/18/woman-8839452_960_720.jpg" alt="Imagen 10">
         </div>
     </div>
+    <div class="footer">
+        <p>Síguenos en:</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+    <script>
+        let index = 0;
+        function moveCarousel() {
+            const carousel = document.querySelector(".carousel");
+            index = (index + 1) % 3;
+            carousel.style.transition = index === 1 ? "transform 0.5s ease-in-out" : "transform 1s ease-in-out";
+            carousel.style.transform = `translateX(${-index * 100}%)`;
+        }
+        setTimeout(moveCarousel, 500); // Primer cambio más rápido
+        setInterval(moveCarousel, 3000);
+    </script>
 </body>
 </html>
